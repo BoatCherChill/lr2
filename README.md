@@ -1,6 +1,6 @@
-# LR2 
+# LR2
 
-Лабораторная работа №2: FastAPI с хранением данных в памяти (без БД) и валидацией через Pydantic.
+Лабораторная работа №2: REST API на FastAPI с хранением данных в памяти процесса и валидацией через Pydantic.
 
 ## Стек
 
@@ -35,32 +35,32 @@ Swagger UI: `http://localhost:8000/docs`
 
 ## Модель данных
 
-Данные хранятся в словаре `students = {id: {...}}` в памяти процесса — **при перезапуске сервера всё теряется**.
+Данные хранятся в словаре `students = {}` в памяти процесса — **при перезапуске сервера всё теряется**.
 
-| Поле | Тип | Ограничения |
-|---|---|---|
-| id | integer | генерируется сервером |
-| name | string | 1–100 символов |
-| email | string (email) | валидный, уникальный |
+| Поле | Тип | Ограничения | Описание |
+|---|---|---|---|
+| `id` | int | генерируется сервером | Идентификатор студента |
+| `name` | str | 1–100 символов | ФИО студента |
+| `email` | str (EmailStr) | валидный, уникальный | Электронная почта |
 
 Пример запроса POST:
 
 ```json
 { "name": "Ivan", "email": "ivan@example.com" }
 ```
-Пример ответа:
+Пример ответа (201):
 
 ```json
-{ "name": "Ivan", "email": "ivan@example.com", "id": 1 }
+{ "id": 1, "name": "Ivan", "email": "ivan@example.com" }
 ```
 Запуск локально
-
 ```bash
 python -m venv .venv
 source .venv/bin/activate        # Linux/macOS
 .venv\Scripts\Activate.ps1       # Windows PowerShell
 ```
-```pip install -r requirements.txt
+```
+pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 Запуск в Docker
