@@ -10,6 +10,7 @@
 - Docker
 
 ## Структура проекта
+```
 lr2-fastapi/
 ├── app/
 │ ├── init.py
@@ -19,18 +20,17 @@ lr2-fastapi/
 ├── Dockerfile
 ├── .gitignore
 └── README.md
-
-text
+```
 
 ## Эндпоинты
-```
+
 | Метод | Путь | Описание | Коды ответа |
 |---|---|---|---|
 | POST | `/students` | Создать студента | 201, 400, 422 |
 | GET | `/students` | Список всех студентов | 200 |
 | GET | `/students/{id}` | Студент по id | 200, 404, 422 |
 | DELETE | `/students/{id}` | Удалить студента | 204, 404, 422 |
-```
+
 Swagger UI: `http://localhost:8000/docs`
 
 ## Модель данных
